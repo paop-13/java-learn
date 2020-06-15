@@ -1,5 +1,7 @@
 package learn;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,6 +18,19 @@ public class HttpRequestDemo {
             json.append(line);
         }
         reader.close();
-        return json.toString();
+        ObjectMapper mapper = new ObjectMapper();
+        Jokes jokes = mapper.readValue(json.toString(), Jokes.class);
+        return "type = " + jokes.type + "value.id = " + jokes.value.id + "value.joke = " + jokes.value.joke;
     }
+}
+
+class Jokes {
+    public String type;
+    public Value value;
+}
+
+class Value {
+    public String id;
+    public String joke;
+    public String[] categories;
 }
