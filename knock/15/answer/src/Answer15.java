@@ -15,7 +15,7 @@ class Second {
         this.word = "no name";
     }
 
-    public Second(String value) {
+    public Second(final String value) {
         this.word = value;
     }
 }
