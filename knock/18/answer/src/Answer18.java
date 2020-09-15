@@ -2,10 +2,28 @@
 //  例として、十二支を表現するenumを実装せよ。
 public class Answer18 {
     public static void main(String[] args) {
-        System.out.println(Eto.hebi);
-        System.out.println(Eto.hebi.getName());
-        System.out.println(Eto.hebi.getId());
+        System.out.println(findEtobyName("午"));
+        System.out.println(findEtobyId(3));
+        System.out.println(findEtobyId(13));
     }
+
+    public static Eto findEtobyName(String value) {
+        for(Eto eto: Eto.values()) {
+            if(eto.name == value) {
+                return eto;
+            }
+        }
+        return null;
+    }
+
+    public static Eto findEtobyId(int value) {
+        for (Eto eto: Eto.values()) {
+            if (eto.id == value) {
+                return eto;
+            }
+        }
+        return null;
+     }
 
     private enum Eto {
         nezumi("子", 1),
